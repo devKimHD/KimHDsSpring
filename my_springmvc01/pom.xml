@@ -17,7 +17,16 @@
 	<dependencies>
 
 		<!-- 추가 할거 -->
+		<!-- 0523 add -->
 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.1.7.RELEASE</version>
+		</dependency>
+
+		<!-- 0523 add -->
 		<!-- 추가 0519 -->
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 		<dependency>
