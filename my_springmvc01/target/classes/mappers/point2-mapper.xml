@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.myex01.mappers.point">
+	<insert id="insertPoint">
+		insert into tbl_point2
+		(pid, memberid, point, pcode)
+		values
+		(seq_point2_pid.nextval, #{memberid}, #{point}, #{pcode})
+	</insert>
+	
+	<update id="updateUserPoint">
+		update tbl_member2 set
+		m_point = m_point + (#{point})
+		where memberid = #{memberid}
+	</update>
+	
+	<delete id="deletePoint">
+		delete from tbl_point2 where pid = #{pid} 
+	</delete>
+	
+	<select id="pointList" resultType="Point2Vo">
+		select * from tbl_point2 where memberid= #{memberid};
+	</select>
+</mapper>
