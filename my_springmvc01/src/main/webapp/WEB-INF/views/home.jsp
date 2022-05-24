@@ -4,5 +4,5 @@
 
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 
-    <h1>환영합니다 home</h1>
+    <h1>환영합니다 home ${loginVo}</h1>
    <%@ include file="/WEB-INF/views/include/footer.jsp" %>

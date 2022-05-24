@@ -1,5 +1,7 @@
 package com.kh.myex01.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +50,12 @@ public class MessageNPointServiceImpl implements MessageNPointService{
 			return message2Vo;
 		}
 		return null;
+	}
+
+	@Override
+	public List<Message2Vo> message2List(String memberid, String mType) {
+		List<Message2Vo> message2List=message2Dao.message2List(memberid, mType);
+		return message2List;
 	}
 
 }
