@@ -22,6 +22,9 @@
 	</delete>
 	
 	<select id="pointList" resultType="Point2Vo">
-		select * from tbl_point2 where memberid= #{memberid};
+		select point, p2c.pdesc, pointdate
+from
+tbl_point2 p, tbl_point2_code p2c
+where p.pcode=p2c.pcode and memberid=#{memberid}
 	</select>
 </mapper>

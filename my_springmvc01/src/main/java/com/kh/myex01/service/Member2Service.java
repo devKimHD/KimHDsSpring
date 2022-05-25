@@ -10,4 +10,5 @@ public interface Member2Service {
 	public boolean insertMember2(Member2Vo member2Vo);
 	public boolean modifyMember2(Member2Vo member2Vo);
 	public boolean deleteMember2(String memberid);
-}
+	public Member2Vo getMemberByIdnPw(String memberid, String memberpw);
+}	

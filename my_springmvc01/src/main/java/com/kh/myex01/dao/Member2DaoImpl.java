@@ -1,6 +1,8 @@
 package com.kh.myex01.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,14 @@ public class Member2DaoImpl implements Member2Dao {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public Member2Vo getMemberByIdnPw(String memberid, String memberpw) {
+		Map<String, String> parameter = new HashMap<String, String>();
+		parameter.put("memberid", memberid);
+		parameter.put("memberpw", memberpw);
+		Member2Vo member2Vo=sqlSession.selectOne(NAMESPACE+"getMemberByIdnPw", parameter);
+		return member2Vo;
 	}
 	
 	

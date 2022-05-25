@@ -8,3 +8,6 @@ create table tbl_member2(
 );
 
 select sysdate from dual;
+
+ALTER TABLE TBL_MEMBER2 
+ADD (M_PIC VARCHAR2(100) DEFAULT null );

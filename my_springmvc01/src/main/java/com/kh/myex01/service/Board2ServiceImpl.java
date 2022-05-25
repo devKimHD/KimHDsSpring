@@ -58,6 +58,11 @@ public class Board2ServiceImpl implements Board2Service{
 		return result;
 	}
 
+	@Override
+	public void updateViewCnt(int bno) {
+		board2Dao.updateViewCnt(bno);
+	}
+
 	
 
 }

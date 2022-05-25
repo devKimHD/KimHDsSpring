@@ -75,4 +75,9 @@ public class Board2DaoImpl implements Board2Dao {
 		sqlSession.update(NAMESPACE+"updateReply", board2Vo);
 	}
 
+	@Override
+	public void updateViewCnt(int bno) {
+		sqlSession.update(NAMESPACE+"updateViewCnt", bno);
+	}
+
 }

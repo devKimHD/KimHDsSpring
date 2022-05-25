@@ -53,4 +53,10 @@ public class Message2DaoTest {
 		for(Message2Vo me2Vo:message2List)
 		System.out.println("message2List "+me2Vo);
 	}
+	
+	@Test
+	public void message2NoRead() {
+		String count=message2Dao.getCountNoReadMessage("user01");
+		System.out.println(count);
+	}
 }

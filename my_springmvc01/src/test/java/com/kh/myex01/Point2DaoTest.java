@@ -1,5 +1,7 @@
 package com.kh.myex01;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import com.kh.myex01.vo.Point2Vo;
 public class Point2DaoTest {
 	@Autowired
 	private MessageNPointService messageNPointService;
+	@Autowired
+	private Point2Dao point2Dao;
 	
 	@Test
 	public void testSendMessage() {
@@ -36,6 +40,13 @@ public class Point2DaoTest {
 		Message2Vo message2Vo=
 				messageNPointService.readMessage(mid, point2Vo);
 		System.out.println("testReadMessage "+message2Vo);
+	}
+	
+	@Test
+	public void testPointList() {
+		String memberid="user01";
+		List<Point2Vo> list=point2Dao.pointList(memberid);
+		System.out.println("testPointList :"+list);
 	}
 	
 	

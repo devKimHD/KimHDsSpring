@@ -3,10 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
-tr.tr_list{
+td.td_list{
 cursor: pointer;
 }
-tr.tr_list:hover {
+td.td_list:hover {
 	background-color: aliceblue;
 }
 </style>
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		alert("답글 작성 완료");	
 	}
 	
-	$(".tr_list").click(function(){
+	$(".td_list").click(function(){
 		var bno=$(this).attr("data-bno");
 		var frmPaging=$("#frmPaging");
 		frmPaging.find("input[name=bno]").val(bno);
@@ -149,10 +149,32 @@ ${pagingDto }
 				</thead>
 				<tbody>
 				<c:forEach items="${board2List }" var="board2Vo">
-					<tr class="tr_list" data-bno="${board2Vo.bno }">
+					<tr>
 						<td>${board2Vo.bno }</td>
-						<td style="padding-left: ${board2Vo.re_level * 40}px">${board2Vo.title }</td>
-						<td>${board2Vo.writer }</td>
+						<td class="td_list" data-bno="${board2Vo.bno }" style="padding-left: ${board2Vo.re_level * 40}px">${board2Vo.title }</td>
+
+						<td>
+						<c:choose>
+						<c:when test="${board2Vo.writer eq loginVo.memberid}">
+						${board2Vo.writer }
+						</c:when>
+						<c:otherwise>
+						<div class="dropdown">
+				 
+						<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					${board2Vo.writer }
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item disabled" href="#">메뉴</a> 
+					 <a class="dropdown-item" href="/member/getUserById?memberid=${loginVo.memberid}">유저 정보 보기</a> 
+					 <a class="dropdown-item" href="#">쪽지 보내기</a>
+				</div>
+						
+				</div>
+						</c:otherwise>
+						
+						</c:choose>
+						</td>
 						<td>${board2Vo.regdate }</td>
 						<td>${board2Vo.viewcnt }</td>
 					</tr>

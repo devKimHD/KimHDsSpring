@@ -13,5 +13,5 @@ public interface Board2Service {
 	public boolean delete(int bno);
 	public int boardCount(PagingDto pagingDto);
 	public boolean insertReply(Board2Vo board2Vo);
-	
+	public void updateViewCnt(int bno);
 }

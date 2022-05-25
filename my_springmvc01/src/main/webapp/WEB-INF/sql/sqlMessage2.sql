@@ -1,7 +1,7 @@
 create table tbl_message2(
     mid number primary key,
-    sender varchar2(50) references tbl_member(userid),
-    receiver varchar2(50) references tbl_member(userid),
+    sender varchar2(50) references tbl_member2(memberid),
+    receiver varchar2(50) references tbl_member2(memberid),
     message varchar2(500) not null,
     senddate date default sysdate,
     opendate date 

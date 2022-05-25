@@ -12,4 +12,5 @@ public interface MessageNPointService {
 	public boolean sendMessage(Message2Vo message2Vo);
 	public Message2Vo readMessage(int mid,Point2Vo point2Vo);
 	public List<Message2Vo> message2List(String memberid,String mType);
+	public String getCountNoReadMessage(String receiver);
 }

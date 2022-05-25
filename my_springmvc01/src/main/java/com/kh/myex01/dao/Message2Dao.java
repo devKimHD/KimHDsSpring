@@ -10,4 +10,5 @@ public interface Message2Dao {
 	public boolean updateOpendate(int mid);
 	public boolean deleteMessage2(int mid);
 	public List<Message2Vo> message2List(String memberid,String mType);
+	public String getCountNoReadMessage(String receiver);
 }

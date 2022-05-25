@@ -59,4 +59,10 @@ public class Message2DaoImpl implements Message2Dao {
 		return message2List;
 	}
 
+	@Override
+	public String getCountNoReadMessage(String receiver) {
+		String count=sqlSession.selectOne(NAMESPACE+"getCountNoReadMessage", receiver);
+		return count;
+	}
+
 }

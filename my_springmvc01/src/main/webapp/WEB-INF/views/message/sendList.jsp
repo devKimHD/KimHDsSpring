@@ -3,7 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 ${message2List}
-
+<script>
+$(document).ready(function(){
+	var tds=$("tr").find(".opendate");
+	tds.each(function(index,item){
+		var is_exist_date=$(item).attr("data-opendate");
+		if(is_exist_date=="false"){
+			$(item).parent().attr("class","w3-large");
+		}
+	});
+});
+</script>
 <div class="row">
 		<div class="col-md-12">
 			<div class="tabbable" id="tabs-758030">
@@ -40,7 +50,11 @@ ${message2List}
 					<td>${status.count}</td>
 					<td>${message2Vo.message}</td>
 					<td>${message2Vo.sender}</td>
-					<td>
+					<td class="opendate" data-opendate=
+					<c:if test="${empty message2Vo.opendate}">
+					false
+					</c:if>
+					>
 					<c:choose>
 					<c:when test="${empty message2Vo.opendate}">
 					읽지 않음

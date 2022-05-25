@@ -57,6 +57,13 @@
 		and re_seq > #{re_seq} 
 		]]>
 	</update>
+	
+	<update id="updateViewCnt">
+		update tbl_board2 set
+		viewcnt= viewcnt+1
+		where bno=#{bno}
+	</update>
+	
 	<sql id="search">
 		<if test="searchType != null and keyword != null">
 			<choose>

@@ -25,8 +25,8 @@ public class Member2ServiceImpl implements Member2Service {
 
 	@Override
 	public boolean insertMember2(Member2Vo member2Vo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result=member2Dao.insertMember2(member2Vo);
+		return result;
 	}
 
 	@Override
@@ -39,6 +39,12 @@ public class Member2ServiceImpl implements Member2Service {
 	public boolean deleteMember2(String memberid) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Member2Vo getMemberByIdnPw(String memberid, String memberpw) {
+		Member2Vo member2Vo=member2Dao.getMemberByIdnPw(memberid, memberpw);
+		return member2Vo;
 	}
 
 }

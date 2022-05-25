@@ -13,12 +13,12 @@ select  * from tbl_member2
 </select>
 
 <insert id="insertMember2">
-insert into tbl_member2 (memberid, memberpw, membername, email)
-	values(#{memberid}, #{memberpw}, #{membername}, #{email})
+insert into tbl_member2 (memberid, memberpw, membername, email, m_pic)
+	values(#{memberid}, #{memberpw}, #{membername}, #{email}, #{m_pic, jdbcType=VARCHAR})
 </insert>
 
 <select id="getMemberById" resultType="Member2Vo">
-select * from tbl_member2 where memberid=#{memberid}
+select * from tbl_member2 where memberid=#{memberid} 
 </select>
 
 <update id="modifyMember2">
@@ -29,4 +29,9 @@ update tbl_member2 set memberpw=#{memberpw}, membername=#{membername},
 <delete id="deleteMember2">
 delete from tbl_member2 where memberid=#{memberid}
 </delete>
+
+<select id="getMemberByIdnPw" resultType="Member2Vo">
+select * from tbl_member2 where memberid = #{memberid} and memberpw = #{memberpw}
+</select>
+
 </mapper>

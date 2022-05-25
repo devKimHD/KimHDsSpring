@@ -58,4 +58,10 @@ public class MessageNPointServiceImpl implements MessageNPointService{
 		return message2List;
 	}
 
+	@Override
+	public String getCountNoReadMessage(String receiver) {
+		String noReadMsgCount=message2Dao.getCountNoReadMessage(receiver);
+		return noReadMsgCount;
+	}
+
 }

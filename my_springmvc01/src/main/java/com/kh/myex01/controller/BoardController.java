@@ -36,6 +36,7 @@ public class BoardController {
 	}
 	@RequestMapping(value="/content" , method=RequestMethod.GET)
 	public String content(int bno,Model model,PagingDto pagingDto) {
+		board2Service.updateViewCnt(bno);
 		Board2Vo board2Vo=board2Service.read(bno);
 		System.out.println("BoardController content, bno"+ bno);
 		System.out.println("BoardController content, board2Vo"+ board2Vo);

@@ -31,4 +31,9 @@
 		where
 		${mType} = #{memberid}
 	</select>
+	
+	<select id="getCountNoReadMessage" resultType="string">
+		select count(*) from tbl_message2 where
+		opendate is null and receiver=#{receiver}
+	</select>
 </mapper>
