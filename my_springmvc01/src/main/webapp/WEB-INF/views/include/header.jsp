@@ -60,9 +60,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
-       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/member/logout" class="nav-link">로그아웃</a>
-      </li>
+       
     </ul>
 
     <!-- Right navbar links -->
@@ -199,14 +197,28 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
+      <c:if test="${not empty loginVo }">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/resources/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src= 
+             <c:choose>
+          <c:when test="${not empty loginVo.m_pic}">
+          "/member/getProfile?filename=${loginVo.m_pic}"
+          </c:when>
+          <c:otherwise>
+          "/resources/dist/img/user2-160x160.jpg"
+          </c:otherwise>
+          </c:choose>
+          class="img-circle elevation-2" alt="User Image">
+<!--           src=""  -->
+          
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">${loginVo.membername }</a>
+           <a href="/member/logout" class="btn btn-sm btn-dark">로그아웃</a>
         </div>
       </div>
+      </c:if>
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">

@@ -1,6 +1,8 @@
 package com.kh.myex01.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +80,20 @@ public class Board2DaoImpl implements Board2Dao {
 	@Override
 	public void updateViewCnt(int bno) {
 		sqlSession.update(NAMESPACE+"updateViewCnt", bno);
+	}
+
+	@Override
+	public void insertFile(String filename, int bno) {
+		Map<String, Object> parameter=new HashMap<String, Object>();
+		parameter.put("filename", filename);
+		parameter.put("bno", bno);
+		sqlSession.insert(NAMESPACE+"insertFile", parameter);
+	}
+
+	@Override
+	public int getNextBno() {
+		int bno=sqlSession.selectOne(NAMESPACE+"getNextBno");
+		return bno;
 	}
 
 }

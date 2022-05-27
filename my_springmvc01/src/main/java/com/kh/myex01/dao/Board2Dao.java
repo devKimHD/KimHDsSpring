@@ -15,4 +15,6 @@ public int boardCount(PagingDto pagingDto);
 public boolean insertReply(Board2Vo board2Vo);
 public void updateReply(Board2Vo board2Vo);
 public void updateViewCnt(int bno);
+public void insertFile(String filename,int bno);
+public int getNextBno();
 }

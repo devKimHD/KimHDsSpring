@@ -1,15 +1,21 @@
 package com.kh.myex01.controller;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.myex01.service.Board2Service;
+import com.kh.myex01.util.FileuploadUtil;
 import com.kh.myex01.vo.Board2Vo;
 import com.kh.myex01.vo.PagingDto;
 
@@ -104,5 +110,25 @@ public class BoardController {
 		rttr.addAttribute("keyword", pagingDto.getKeyword());
 		rttr.addFlashAttribute("reply_result", reply_result);
 		return "redirect:/board/list";
+	}
+	
+	@RequestMapping(value="/uploadFile" , method=RequestMethod.POST)
+	@ResponseBody
+	public String uploadFile(MultipartFile file) throws Exception {
+		
+		String originalFilename=file.getOriginalFilename();
+		byte[] originalFile=file.getBytes();
+		String targetFileName=FileuploadUtil.uploadFile("c:/myboardattach", originalFilename, originalFile);
+		System.out.println("BoardController uploadFile targetFileName: "+targetFileName);
+		return targetFileName;
+	}
+	
+	@RequestMapping(value="/getUploadFile", method=RequestMethod.GET)
+	@ResponseBody
+	public byte[] getUploadFile(String filename) throws IOException {
+		System.out.println("BoardController getUploadFile filename "+filename);
+		FileInputStream fis=new FileInputStream(filename);
+		byte[] data=IOUtils.toByteArray(fis);
+		return data;
 	}
 }

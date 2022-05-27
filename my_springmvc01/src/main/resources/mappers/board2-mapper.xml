@@ -21,8 +21,8 @@
 	<insert id="insert">
 		insert into tbl_board2 (bno, title, content, writer,re_group)
 		values
-		(seq_board2_bno.nextval, #{title}, #{content, jdbcType=VARCHAR}, #{writer}
-		, seq_board2_bno.nextval)
+		(#{bno}, #{title}, #{content, jdbcType=VARCHAR}, #{writer}
+		, #{bno})
 	</insert>
 
 	<select id="read" resultType="Board2Vo">
@@ -63,7 +63,19 @@
 		viewcnt= viewcnt+1
 		where bno=#{bno}
 	</update>
+	<!-- select seq.nextval -->
 	
+	<select id="getNextBno" resultType="int">
+		select seq_board2_bno.nextval from dual
+	</select>
+	
+	<!-- file insert -->
+	<insert id="insertFile">
+		insert into tbl_attach2 
+		(filename,bno)
+		values
+		(#{filename},#{bno})
+	</insert>
 	<sql id="search">
 		<if test="searchType != null and keyword != null">
 			<choose>

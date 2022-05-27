@@ -32,6 +32,9 @@ ${message2List}
 						<th>
 							보낸 날짜
 						</th>
+						<th>
+							읽은 날짜
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +44,17 @@ ${message2List}
 					<td>${message2Vo.message}</td>
 					<td>${message2Vo.sender}</td>
 					<td>${message2Vo.senddate}</td>
+					<td>
+					<c:choose>
+					<c:when test="${empty message2Vo.opendate}">
+					읽지않음
+					</c:when>
+					<c:otherwise>
+						${message2Vo.opendate}
+					</c:otherwise>
+				
+					</c:choose>
+					</td>
 						
 					</tr>
 				</c:forEach>	

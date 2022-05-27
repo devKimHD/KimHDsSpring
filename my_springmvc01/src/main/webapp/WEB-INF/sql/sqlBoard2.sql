@@ -25,3 +25,9 @@ where rnum between 1 and 10;
 --업데이트 그룹넘
 
 update tbl_board2 set  re_group=bno;
+
+-- 첨부 파일
+create table tbl_attach2(
+filename varchar2(300) primary key,
+bno number REFERENCES tbl_board2(bno)
+); 

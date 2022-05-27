@@ -15,8 +15,19 @@ public class Board2ServiceImpl implements Board2Service{
 	@Autowired
 	private Board2Dao board2Dao;
 	@Override
+	@Transactional
 	public boolean insert(Board2Vo board2Vo) {
+		int bno=board2Dao.getNextBno();
+		board2Vo.setBno(bno);
+		
 		boolean result=board2Dao.insert(board2Vo);
+		String[] files=board2Vo.getFiles();
+		if(files !=null && files.length>0) {
+			for(String filename:files) {
+				board2Dao.insertFile(filename, bno);
+			}
+		}
+		
 		return result;
 	}
 

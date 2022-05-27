@@ -11,14 +11,14 @@ public class FileuploadUtil {
 
 	public static String uploadFile(String path,
 								String originalFilename,
-								byte[] origianlFile) 
+								byte[] originalFile) 
 	{
 		UUID uuid=UUID.randomUUID();
 		String targetFileName=path+"/"+uuid+"_"+originalFilename;
 		System.out.println("FileuploadUtil targetFileName :"+targetFileName);
 		File targetFile=new File(targetFileName);
 		try {
-			FileCopyUtils.copy(origianlFile, targetFile);
+			FileCopyUtils.copy(originalFile, targetFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

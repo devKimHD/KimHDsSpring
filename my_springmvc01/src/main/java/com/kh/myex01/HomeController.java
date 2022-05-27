@@ -24,7 +24,7 @@ public class HomeController {
 //		Member2Vo loginVo=member2Service.getMemberById("user01");
 		
 //		session.setAttribute("loginVo",loginVo);
-		
+		session.invalidate();
 		return "home";
 	}
 	
