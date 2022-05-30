@@ -131,4 +131,12 @@ public class BoardController {
 		byte[] data=IOUtils.toByteArray(fis);
 		return data;
 	}
+	
+	@RequestMapping(value="/deleteFile", method=RequestMethod.GET)
+	@ResponseBody
+	public String deleteFile(String filename) {
+		System.out.println("BoardController deleteFile filename "+filename);
+		boolean result=FileuploadUtil.deleteFile(filename);
+		return String.valueOf(result);
+	}
 }

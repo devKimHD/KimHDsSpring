@@ -24,4 +24,15 @@ public class FileuploadUtil {
 		}
 		return targetFileName;
 	}
+	
+	public static boolean deleteFile(String filename) {
+		File targetFile=new File(filename);
+		if(targetFile.exists()) {
+			targetFile.delete();
+			return true;
+		
+		}
+		
+		return false;
+	}
 }

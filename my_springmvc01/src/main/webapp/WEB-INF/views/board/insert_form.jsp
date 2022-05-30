@@ -52,8 +52,9 @@
 						cloneDivImgDesc.find("img").attr("src",
 								"/board/getUploadFile?filename="+rData);
 					}
+					cloneDivImgDesc.find("a.a_deleteImg").attr("data-filename",rData);
 					cloneDivImgDesc.appendTo($("#uploadedList")).show();
-					//$("#uploadedList").append(cloneDivImgDesc).show();
+					
 				}
 				
 			});
@@ -66,6 +67,22 @@
 				$("#frmCreate").prepend(inputHTML);
 			});
 		
+		});
+		
+		$("#uploadedList").on("click","a.a_deleteImg",function(e){
+			e.preventDefault();
+			var that=$(this);
+			var filename=$(this).attr("data-filename");
+			var url="/board/deleteFile";
+			var sendData={
+					"filename":filename
+			};
+			$.get(url,sendData,function(rData){
+				console.log("delete :",rData);
+				if(rData =="true"){
+					that.parent().remove();
+				}
+			});
 		});
 		
 	});
@@ -118,6 +135,7 @@
 				<div class="cloneDivImgDesc" style="display:none;">
 					<img src="/resources/images/default.png" alt="파일이 없습니다" height="100px">
 					<span>확장자가 jpg,gif,png가 아닙니다</span>
+					<a class="a_deleteImg" href="#"> &#88;</a>
 				</div>
 				
 				<div id="uploadedList">
